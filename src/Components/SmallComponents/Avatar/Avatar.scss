@@ -1,0 +1,11 @@
+@use '../../../styles/colors' as *;
+
+    .avatar {
+        background-color: $mainBackground;
+        border-radius: 50%;
+        overflow: hidden;
+        &__img {
+            width: 100%;
+            height: auto;
+        }
+    }

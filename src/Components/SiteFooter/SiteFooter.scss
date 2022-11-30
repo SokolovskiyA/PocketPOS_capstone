@@ -1,0 +1,15 @@
+@use '../../styles/colors' as *;
+
+
+.siteFooter {
+    background-color: $darkBackground;
+    color: $WebsiteWhite;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    &__logo {
+        height: 3rem;
+    }
+}

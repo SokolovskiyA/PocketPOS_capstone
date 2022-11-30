@@ -1,0 +1,55 @@
+@use '../../styles/colors' as *;
+
+.main-cabinet {
+    background-color: $mainBackground;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    &__info {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-around;
+        height: 70%;
+    }
+    &__avatar {
+        width: 10rem;
+        height: 10rem;
+    }
+    &__avatar-div {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__text {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        color: $TextColor;
+        gap: 1rem;
+        padding: 1rem;
+        border-left: 2px solid $darkBackground;
+    }
+}
+.restaurants {
+    height: 30%;
+    background-color: $HighlightColor;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: scroll;
+    color: $TextColor;
+    &__restaurant {
+        background-color: $ElementBackground;
+        border-radius: 10px;
+        height: 6rem;
+        width: 6rem;
+    }
+    &__name {
+        font-size: 0.8rem;
+        text-align: center;
+        border-bottom: 1px solid $TextColor;
+    }
+}
