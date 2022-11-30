@@ -9,6 +9,10 @@ import './MainCabinet.scss'
 import add from '../../Assets/images/add.png';
 
 function MainCabinet() {
+    const navigate = useNavigate();
+    const chooseRestaurant = event => {
+        navigate(`/${event.target.id}`)
+    }
     return (
         <div className='main-cabinet'>
             <div className="main-cabinet__info">
@@ -24,19 +28,19 @@ function MainCabinet() {
                 </section>
             </div>
             <div className='restaurants'>
-                <div className="restaurants__restaurant">
+                <div onClick={chooseRestaurant} id="01" className="restaurants__restaurant">
                     <h2 className='restaurants__name'>restaurant1</h2>
                     <img/>
                 </div> 
-                <div className="restaurants__restaurant">
+                <div onClick={chooseRestaurant} id="02" className="restaurants__restaurant">
                     <h2 className='restaurants__name'>restaurant1</h2>
                     <img/>
                 </div> 
-                <div className="restaurants__restaurant">
+                <div onClick={chooseRestaurant} id="03" className="restaurants__restaurant">
                     <h2 className='restaurants__name'>restaurant1</h2>
                     <img/>
                 </div> 
-                <div className="restaurants__restaurant">
+                <div onClick={chooseRestaurant} id="04" className="restaurants__restaurant">
                     <h2 className='restaurants__name'>restaurant1</h2>
                     <img/>
                 </div> 
