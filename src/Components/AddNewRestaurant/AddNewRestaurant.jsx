@@ -16,15 +16,24 @@ function AddNewRestaurant() {
     const [categories, setCategories] = useState([{category: ""}])
     const [drinkCat, setDrinkCat] = useState([{drink_category: ""}])
     
-    
-    const [items, setItems] = useState([])
-    
+    const [items, setItems] = useState([{
+        item_name: "",
+        item_description: "",
+        item_price: "",
+        item_category:"",
 
+    }])
+
+
+    ////form field manipulation////
     const handleFoodCategoryAdd = () => {
         setCategories([...categories, {category: ""}])
     }
     const handleDrinkCategoryAdd = () => {
         setDrinkCat([...drinkCat, {drink_category: ""}])
+    }
+    const handleItemAdd = () => {
+        setItems([...items, {}])
     }
     const handleCategoryRemove = (index, array, func) => {
         const list = [...array]
@@ -40,7 +49,7 @@ function AddNewRestaurant() {
     }
 
 
-
+    ///Submit handlers/////
     const handleCancel = e => {
         e.preventDefault()
         navigate('/')
@@ -50,10 +59,13 @@ function AddNewRestaurant() {
         let newRestaurant = {
             restaurant_name: restaurantName,
             restaurantAddress: restaurantAddress,
-            restaurantPhone: restaurantPhone
+            restaurantPhone: restaurantPhone 
         }
+
         let drinkCategories = drinkCat
         let foodCategories = categories 
+        
+        
         console.log(foodCategories)
         console.log(drinkCategories)
         console.log(newRestaurant)
@@ -99,7 +111,22 @@ function AddNewRestaurant() {
                 </div>
                 <div className='addNew__inputs-div'>
                 <label className="addNew__label">add new item<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
-                    {}
+                    {items.map((item, i)=> {
+                        return (
+                            <div className='item'>
+                                <input name="item_name" value={item.item_name} onChange={(e)=> handleCategoryChange(e, i, items, setItems)} className='item__input' type="text" placeholder='Item Name'/>
+                                <input type="number" className='item__input' placeholder='Item Price $'/>
+                                <textarea name="item_description" rows="5" className="item__input" placeholder='Item Decription (syllabus, ingredients, etc.)'/>
+                                <select className="item__input" name="category" placeholder='Please Select Item Category'>
+                                    
+                                </select>
+                                <div className="addNew__buttons">
+                                    {items.length !== 1 && <button onClick={()=> handleCategoryRemove(i, items, setItems)} className='addNew__remove'></button>}
+                                    {items.length - 1 === i && <button onClick={handleItemAdd} className='addNew__add'></button>}
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className='addNew__buttons'>
                     <Button click={handleCancel} logo={error} text="cancel"></Button>

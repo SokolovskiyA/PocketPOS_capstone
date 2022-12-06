@@ -83,3 +83,19 @@
         height: 1.2rem;
     }
 }
+.item {
+    box-sizing: border-box;
+    padding-bottom: 0.5rem;
+    &__input { 
+        width: 95%;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid $darkBackground;
+        font-family: inherit;
+        resize: none;
+    }
+    &__input:focus {
+        outline: 2px solid $activeColor;
+    }
+}
