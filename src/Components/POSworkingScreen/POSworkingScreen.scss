@@ -1,0 +1,44 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+
+
+.categories {
+    height: 7%;
+    display: flex;
+    align-items: stretch;
+    overflow: scroll;
+    &__category {
+        background-color: $mainBackground;
+        padding: 0 1rem;
+        border-right: 2px solid $TextColor;
+        border-bottom: 1px solid $TextColor;
+        text-transform: uppercase;
+    }
+    &__category:hover {
+        background-color: $HighlightColor;
+    }
+}
+.products {
+    border-bottom: 2px solid $TextColor;
+    margin-bottom: auto;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    &__product {
+        font-size: .625rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0.1rem;
+        width: 3rem;
+        height: 3rem;
+        border: 1px solid $TextColor;
+    }
+    &__name {
+        overflow: hidden;
+    }
+}
+
+.check {
+}

@@ -3,63 +3,86 @@ import Button from '../SmallComponents/Button/Button'
 import './POSPage.scss'
 import tableLogo from '../../Assets/images/dining-table.png'
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function POSPage() {
+    const navigate = useNavigate();
     const [tables, setTables] = useState([])
+    const [number, setNumber] = useState("")
+    const [seats, setSeats] = useState("")
+    console.log(tables)
+    
+    const tableClick = event => {
+        navigate(`/table/${event.target.id}`)
+    }
 
     const addTable = event => {
         event.preventDefault();
-        
+        const newTable = {
+            number: {number},
+            seats: {seats}
+        }  
+        console.log(newTable)
+        setTables([...tables, newTable])
     }
+
+    
     return (
-        <div className="POSscreen">
-            <div className='POSscreen__tables tables'>
-                {tables.map((table) => {
-                    <div className='tables__table'>
-                        <img className='tables__image' src={table.image}/>
-                        <p className='tables__number'>{table.table_number}</p>
-                    </div>
-                })}
-                <Button click={addTable} logo={tableLogo} class="POSscreen__button" text="Add Table"/>
-            </div>
+        <div className="main-cabinet">
             <div className='shift-stats'>
                 <h1 className='shift-stats__header'>Shift Stats:</h1> 
                 <table>
-                    <tbody>
-                        <tr>
+                    <tbody className="shift-stats__table">
+                        <tr className="shift-stats__table-row">
                             <td>Open tables:</td>
-                            <td>1</td>
+                            <td>{tables.length}</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Closed tables:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Total Sales:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Total tips earned:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Total tips earned:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Kitchen tipout:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Bar tipout:</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr className="shift-stats__table-row">
                             <td>Host tipout:</td>
                             <td>1</td>
                         </tr>
                     </tbody>
                 </table> 
+            </div>
+            <div className='tables'>
+                <div className='tables__container'>
+                        {tables?.map((table)=> (
+                            <div onClick={tableClick} id={table.number.number} className='tables__table'>
+                            <p className='tables__number'>{table.number.number}</p>
+                        </div>
+                        ))}
+                </div>
+                <form onSubmit={addTable}>
+                    <div className="addform">
+                        <input value={number} onChange={(e)=>setNumber(e.target.value)} className="addform__input" type="text" placeholder="table number"/>
+                        <input value={seats} onChange={(e)=>setSeats(e.target.value)} className="addform__input" type="number" placeholder="number of people"/>
+                    </div>
+                    <Button type="submit" logo={tableLogo} text="Add Table"/>
+                </form>
             </div>
         </div>
     )

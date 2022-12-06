@@ -1,28 +1,43 @@
 @use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
 
 .siteHeader {
     background-color: $darkBackground;
-    display: flex;
-    align-items: center;
-    height: 4rem;
-    gap: 1rem;
-    color: $WebsiteWhite;
-    padding: 0 2rem;
+    padding: 0 1rem;
+    color: $TextColor;
+    height: 10vh;
+    @include phone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    @include tablet {
+        display: flex;
+        flex-direction:row;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 56.25rem;
+        margin: auto;
+    }
+    &__user-div {
+        width: 100%;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 1rem;
+        @include tablet {
+            justify-content: flex-end;
+        }
+    }
     &__link {
-        margin-right: auto;
+        margin: auto;
     }
     &__logo{
-        height: 4rem;
-    }
-    &__button {
-        align-self: center;
+        height: 3rem;
     }
     &__greeting {
         text-transform: uppercase;
         font-weight: 500;
-    }
-    &__avatar {
-        height: 2.8rem;
-        width: 2.8rem;
     }
 }

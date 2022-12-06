@@ -5,9 +5,7 @@ import avatar from '../../../Assets/images/waiter.png'
 
 function Avatar(props) {
     return (
-        <div className={`avatar ${props.class}`}>
-            <img className="avatar__img" src={avatar} alt="avo"/> 
-        </div>
+        <img className="avatar" src={avatar} alt="avo"/> 
     )
 }
 export default Avatar

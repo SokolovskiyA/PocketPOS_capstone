@@ -7,7 +7,18 @@
     padding: 0;
 }
 
-body {
-    height: 100%;
-    
+
+.header {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: $darkBackground;
+    border-bottom: 1px solid $TextColor;
+}
+
+.subheader {
+    font-size: 1rem;
+    color: $darkBackground;
+    padding: 0 0.5rem;
 }

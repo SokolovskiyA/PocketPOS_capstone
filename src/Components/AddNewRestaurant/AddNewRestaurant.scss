@@ -1,0 +1,85 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.addNew {
+    margin: 0.5rem;
+    &__inputs-div{
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+        border: 0.1rem solid $darkBackground;
+        border-radius: .625rem;
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+    &__input {
+        width:75%;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid $darkBackground;
+        @include tablet {
+            width: 30%;
+        }
+    }
+    &__input:focus {
+        outline: 2px solid $activeColor;
+    }
+    &__category-input {
+        width:80%;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid $darkBackground;
+    }
+    &__category-input:focus {
+        outline: 2px solid $activeColor;
+    }
+    &__label {
+        margin: 0 0.5rem 0.5rem;
+        width: 100%;
+        text-transform: uppercase;
+        opacity: 50%;
+        font-weight: 600;
+        font-size: 0.8rem;
+
+    }
+    &__label-img {
+        position: relative;
+        top: 0.5rem;
+    }
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    &__category{ 
+        display: flex;
+        width: 100%;
+        @include tablet {
+            width: 30%;
+        }
+    }
+    &__add {
+        border: none;
+        background-color: $mainBackground;
+        background-image: url('../../Assets/icons/more.png');
+        background-size: cover;
+        background-position: center;
+        width:1.2rem;
+        height: 1.2rem;
+    }
+    &__remove {
+        border: none;
+        background-color: $mainBackground;
+        background-image: url('../../Assets/icons/minus.png');
+        background-size: 140%;
+        background-position: center;
+        width:1.2rem;
+        height: 1.2rem;
+    }
+}

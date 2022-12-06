@@ -1,39 +1,91 @@
 @use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
 .POSscreen{
     display: flex;
-    justify-content: space-between;
-    &__tables {
-        width: 70%;
-        display: flex;
-        padding: 1rem;
+    flex-direction: column;
+    @include phone {
+        height: 70%;
     }
-    &__button {
-        width: 50%;
-        margin: 0 auto;
-        align-self: flex-end;
+    @include tablet {
+        height: 85%;
+        width: 100%;
+        max-width: 56.25rem;
+        margin: auto;
     }
 }
 .shift-stats {
-    width: 30%;
-    padding: 1rem;
-    margin: 1rem;
-    border-left: 2px solid $darkBackground;
+    padding: 0.3rem;
+    width: 100%;
+    border-bottom: 2px solid $darkBackground;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: scroll;
+    height: 5%;
+    &__header { 
+        min-width: max-content;
+        font-size: 1rem;
+        border-right: 2px solid $darkBackground;
+        padding-right: 0.3rem;
+    }
+    &__table {
+        display: flex;
+        align-self: stretch;
+    }
+    &__table-row { 
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        min-width: max-content;
+        border-right: 1px solid $darkBackground;
+        padding: 0 0.3rem;
+    }
+}
+.tables { 
+    height: 90%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-.tables {
+    gap: 1.5rem;
+    &__container {
+        padding: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
     &__table {
+        display: flex;
         width: 2.5rem;
         height: 2.5rem;
-        display: flex;
-        flex-wrap: wrap;
-    }
-    &__image {
-        width: 100%;
+        background-image: url("../../Assets/images/dining-table.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     &__number {
         width: 100%;
+        align-self: flex-start;
+        font-weight: 700;
         text-align: center;
+        background-color: $HighlightColor;
     }
 }
+
+.addform {
+    display: flex;
+    &__input {
+        width: 50%;
+        border: 2px solid $darkBackground;
+        border-bottom: none;
+        padding: 0.5rem;
+        background-color: $TextColor;
+    }
+    &__input:focus {
+        outline: none;
+    }
+}
+

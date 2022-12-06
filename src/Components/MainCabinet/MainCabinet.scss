@@ -1,26 +1,19 @@
 @use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
 
 .main-cabinet {
     background-color: $mainBackground;
-    height: 75vh;
     display: flex;
     flex-direction: column;
+    min-height: 80vh;
+    color: $TextColor;
     &__info {
         padding: 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         height: 70%;
-    }
-    &__avatar {
-        width: 10rem;
-        height: 10rem;
-    }
-    &__avatar-div {
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+        margin-bottom: auto;
     }
     &__text {
         width: 60%;
@@ -29,28 +22,40 @@
         color: $TextColor;
         gap: 1rem;
         padding: 1rem;
-        border-left: 2px solid $darkBackground;
+    }
+    @include tablet { 
+        width: 100%;
+        max-width: 56.25rem;
+        margin: auto;
     }
 }
 .restaurants {
     height: 30%;
     background-color: $HighlightColor;
-    padding: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    flex-wrap: wrap;
     overflow: scroll;
     color: $TextColor;
-    border-top: 2px solid $darkBackground;
     &__restaurant {
-        background-color: $mainBackground;
-        border-radius: 10px;
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        background-image: url('../../Assets/images/restaurantDummie.jpeg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        color: $TextColor;
     }
     &__name {
         font-size: 0.8rem;
         text-align: center;
-        border-bottom: 1px solid $TextColor;
+        background-color: $darkBackground;
+        padding: 0.2rem;
+        border: 1px solid $TextColor;
+    }
+    &__button {
+        width: 100%;
+        border-radius: 0;
+        justify-content: center;
     }
 }

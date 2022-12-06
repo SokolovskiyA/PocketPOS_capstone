@@ -1,15 +1,23 @@
 @use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
 
 
 .siteFooter {
     background-color: $darkBackground;
-    color: $WebsiteWhite;
+    width: 100%;
+    color: $TextColor;
     padding: 1rem;
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    height: 10vh;
     &__logo {
         height: 3rem;
+    }
+    @include tablet { 
+        width: 100%;
+        max-width: 56.25rem;
+        margin: auto;
     }
 }
