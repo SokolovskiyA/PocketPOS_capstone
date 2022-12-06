@@ -99,20 +99,7 @@ function AddNewRestaurant() {
                 </div>
                 <div className='addNew__inputs-div'>
                 <label className="addNew__label">add new item<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
-                    {/*drinkCat.map((category, i) => {
-                        return (
-                        <div className='addNew__item'>
-                            <input name="item_name" className='addNew__category-input' type="text" placeholder="Item Name"/> 
-                            <input name="item_price" className='addNew__category-input' type="number" placeholder="Item Price"/> 
-                            <input name="item_category" className='addNew__category-input' type="" placeholder="Item Category"/>
-                            <input name="item_description" className='addNew__category-input' type="" placeholder="Item Description"/>
-                            <div className="addNew__buttons">
-                                {drinkCat.length !== 1 && <button className='addNew__remove'></button>}
-                                {drinkCat.length - 1 === i && <button onClick={handleAddCatClick} className='addNew__add'></button>}
-                            </div>
-                        </div>
-                        )
-                    })*/}
+                    {}
                 </div>
                 <div className='addNew__buttons'>
                     <Button click={handleCancel} logo={error} text="cancel"></Button>
