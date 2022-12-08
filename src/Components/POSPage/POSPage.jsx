@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../SmallComponents/Button/Button'
 import './POSPage.scss'
 import tableLogo from '../../Assets/images/dining-table.png'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function POSPage() {
@@ -10,7 +10,6 @@ function POSPage() {
     const [tables, setTables] = useState([])
     const [number, setNumber] = useState("")
     const [seats, setSeats] = useState("")
-    console.log(tables)
     
     const tableClick = event => {
         navigate(`/table/${event.target.id}`)
@@ -22,8 +21,13 @@ function POSPage() {
             number: {number},
             seats: {seats}
         }  
-        console.log(newTable)
-        setTables([...tables, newTable])
+        if (number === "" || seats === "") {
+            console.log("please provide table info")
+        }
+
+        else {
+            setTables([...tables, newTable])
+        }
     }
 
     
@@ -39,31 +43,27 @@ function POSPage() {
                         </tr>
                         <tr className="shift-stats__table-row">
                             <td>Closed tables:</td>
-                            <td>1</td>
+                            <td>0</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Total Sales:</td>
-                            <td>1</td>
+                            <td>Total Sales: $</td>
+                            <td>0</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Total tips earned:</td>
-                            <td>1</td>
+                            <td>Total tips earned: $</td>
+                            <td>0</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Total tips earned:</td>
-                            <td>1</td>
+                            <td>Kitchen tipout: $</td>
+                            <td>0</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Kitchen tipout:</td>
-                            <td>1</td>
+                            <td>Bar tipout: $</td>
+                            <td>0</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Bar tipout:</td>
-                            <td>1</td>
-                        </tr>
-                        <tr className="shift-stats__table-row">
-                            <td>Host tipout:</td>
-                            <td>1</td>
+                            <td>Host tipout: $</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                 </table> 

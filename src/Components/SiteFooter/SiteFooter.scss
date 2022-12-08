@@ -15,9 +15,4 @@
     &__logo {
         height: 3rem;
     }
-    @include tablet { 
-        width: 100%;
-        max-width: 56.25rem;
-        margin: auto;
-    }
 }

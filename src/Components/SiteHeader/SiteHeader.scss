@@ -6,19 +6,8 @@
     padding: 0 1rem;
     color: $TextColor;
     height: 10vh;
-    @include phone {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    @include tablet {
-        display: flex;
-        flex-direction:row;
-        justify-content: flex-start;
-        width: 100%;
-        max-width: 56.25rem;
-        margin: auto;
-    }
+    display: flex;
+    justify-content: center;
     &__user-div {
         width: 100%;
         padding: 0.5rem;
@@ -34,7 +23,7 @@
         margin: auto;
     }
     &__logo{
-        height: 3rem;
+        height: 4rem;
     }
     &__greeting {
         text-transform: uppercase;

@@ -9,20 +9,15 @@ import { useNavigate } from "react-router-dom";
 
 
 function AddNewRestaurant() {
+    const allergies = [ "dairy", "gluten",  "shellfish", "fish", "tree nuts", "peanuts", "soy", "eggs" ]
     const navigate = useNavigate()
     const [restaurantName, setRestaurantName] = useState('')
     const [restaurantAddress, setRestaurantAddress] = useState('')
     const [restaurantPhone, setRestaurantPhone] = useState('')
     const [categories, setCategories] = useState([{category: ""}])
     const [drinkCat, setDrinkCat] = useState([{drink_category: ""}])
-    
-    const [items, setItems] = useState([{
-        item_name: "",
-        item_description: "",
-        item_price: "",
-        item_category:"",
-
-    }])
+    const [itemType, setItemType ] = useState("Food Item")
+    const [items, setItems] = useState([{}])
 
 
     ////form field manipulation////
@@ -33,15 +28,20 @@ function AddNewRestaurant() {
         setDrinkCat([...drinkCat, {drink_category: ""}])
     }
     const handleItemAdd = () => {
-        setItems([...items, {}])
+        setItems([...items, {
+            item_name:"",
+            item_description:"",
+            item_price: Number(),
+            item_category:"",
+            item_alergies:[],
+        }])
     }
-    const handleCategoryRemove = (index, array, func) => {
+    const handleRemove = (index, array, func) => {
         const list = [...array]
         list.splice(index, 1)
         func(list)
-        console.log(array)
     }
-    const handleCategoryChange = (e , i, array, func) => {
+    const handleChange = (e , i, array, func) => {
         const {name, value} = e.target
         const list = [...array]
         list[i][name] = value;
@@ -61,15 +61,14 @@ function AddNewRestaurant() {
             restaurantAddress: restaurantAddress,
             restaurantPhone: restaurantPhone 
         }
-
         let drinkCategories = drinkCat
         let foodCategories = categories 
-        
         
         console.log(foodCategories)
         console.log(drinkCategories)
         console.log(newRestaurant)
     }
+
     return (
         <div className='main-cabinet'>
             <h1 className="header">Congrats with the new job!</h1>
@@ -86,9 +85,9 @@ function AddNewRestaurant() {
                     {categories.map((category, i) => {
                         return (
                         <div key={i} className='addNew__category'>
-                            <input name="category" value={category.category} onChange={(e)=> handleCategoryChange(e, i, categories, setCategories)} className='addNew__category-input' type="text" placeholder='Menu Category'/>
+                            <input name="category" value={category.category} onChange={(e)=> handleChange(e, i, categories, setCategories)} className='addNew__category-input' type="text" placeholder='Menu Category'/>
                             <div className="addNew__buttons">
-                                {categories.length !== 1 && <button onClick={()=> handleCategoryRemove(i, categories, setCategories)} className='addNew__remove'></button>}
+                                {categories.length !== 1 && <button onClick={()=> handleRemove(i, categories, setCategories)} className='addNew__remove'></button>}
                                 {categories.length - 1 === i && <button onClick={handleFoodCategoryAdd} className='addNew__add'></button>}
                             </div>
                         </div>
@@ -96,13 +95,13 @@ function AddNewRestaurant() {
                     })}
                 </div>
                 <div className='addNew__inputs-div'>
-                <label className="addNew__label">add drinks categories<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
+                <label className="addNew__label">add drink categories<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
                     {drinkCat.map((category, i) => {
                         return (
                         <div key={i} className='addNew__category'>
-                            <input name="drink_category" value={category.drink_category} onChange={(e)=> handleCategoryChange(e, i, drinkCat, setDrinkCat)} className='addNew__category-input' type="text" placeholder='Drink Category'/>
+                            <input name="drink_category" value={category.drink_category} onChange={(e)=> handleChange(e, i, drinkCat, setDrinkCat)} className='addNew__category-input' type="text" placeholder='Drink Category'/>
                             <div className="addNew__buttons">
-                                {drinkCat.length !== 1 && <button onClick={()=> handleCategoryRemove(i, drinkCat, setDrinkCat)} className='addNew__remove'></button>}
+                                {drinkCat.length !== 1 && <button onClick={()=> handleRemove(i, drinkCat, setDrinkCat)} className='addNew__remove'></button>}
                                 {drinkCat.length - 1 === i && <button onClick={handleDrinkCategoryAdd} className='addNew__add'></button>}
                             </div>
                         </div>
@@ -113,15 +112,44 @@ function AddNewRestaurant() {
                 <label className="addNew__label">add new item<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
                     {items.map((item, i)=> {
                         return (
-                            <div className='item'>
-                                <input name="item_name" value={item.item_name} onChange={(e)=> handleCategoryChange(e, i, items, setItems)} className='item__input' type="text" placeholder='Item Name'/>
-                                <input type="number" className='item__input' placeholder='Item Price $'/>
-                                <textarea name="item_description" rows="5" className="item__input" placeholder='Item Decription (syllabus, ingredients, etc.)'/>
-                                <select className="item__input" name="category" placeholder='Please Select Item Category'>
-                                    
+                            <div key={i} className='item'>
+                                <input name="item_name" value={item.item_name} onChange={(e)=> handleChange(e, i, items, setItems)} type="text" className='item__input'  placeholder='Item Name'/>
+                                <input name="item_price" value={item.item_price} onChange={(e)=> handleChange(e, i, items, setItems)} type="number" className='item__input' placeholder='Item Price $'/>
+                                <textarea name="item_description" value={item.item_description} onChange={(e)=> handleChange(e, i, items, setItems)} type="text" className="item__input" placeholder='Item Decription (syllabus, ingredients, etc.)' rows="5"/>
+                                    <div className='item__type'>    
+                                        <div className="item__radio">
+                                            <input type="radio" name="item type" value="Food Item" onClick={(e) => setItemType("Food Item")} defaultChecked/>
+                                            <label labelfor="item type">Food Item</label>
+                                        </div>
+                                        <div className="item__radio">
+                                            <input type="radio" name="item type" value="Drink Item" onClick={(e) => setItemType("Drink Item")}/>
+                                            <label labelfor="item type">Drink Item</label>
+                                        </div>
+                                    </div>
+                                <select name="item_category" className="item__input" onChange={(e)=> handleChange(e, i, items, setItems)}>
+                                    { itemType === "Food Item" && (
+                                        categories.map((category)=> {
+                                        return(
+                                            <option key={category.category}>{category.category}</option>
+                                    )}))}
+                                    { itemType === "Drink Item" && (
+                                        drinkCat.map((category)=> {
+                                        return(
+                                            <option key={category.drink_category} placeholder="please select item category">{category.drink_category}</option>
+                                    )}))}
                                 </select>
+                                <div className="item__allergies" name="allergies">
+                                    <label className="addNew__label item__allergies-label">Choose allergy allerts<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
+                                    {allergies.map((allergy) => (
+                                        <div key={allergy} className='item__allergy'>
+                                            <input type="checkbox" name={allergy} value={allergy}/>
+                                            <label labelfor={allergy}>{allergy}</label>
+                                        </div>
+                                    ))}
+                                    
+                                </div>
                                 <div className="addNew__buttons">
-                                    {items.length !== 1 && <button onClick={()=> handleCategoryRemove(i, items, setItems)} className='addNew__remove'></button>}
+                                    {items.length !== 1 && <button onClick={()=> handleRemove(i, items, setItems)} className='addNew__remove'></button>}
                                     {items.length - 1 === i && <button onClick={handleItemAdd} className='addNew__add'></button>}
                                 </div>
                             </div>

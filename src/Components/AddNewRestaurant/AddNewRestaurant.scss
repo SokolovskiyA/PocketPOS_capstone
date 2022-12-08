@@ -84,10 +84,11 @@
     }
 }
 .item {
-    box-sizing: border-box;
+    width: 98%;
     padding-bottom: 0.5rem;
+    border-bottom: 1px solid $darkBackground;
     &__input { 
-        width: 95%;
+        width: 100%;
         margin: 0.5rem;
         padding: 0.5rem;
         border-radius: 10px;
@@ -97,5 +98,32 @@
     }
     &__input:focus {
         outline: 2px solid $activeColor;
+    }
+    &__type {
+        display: flex;
+        justify-content: space-around;
+        padding: 0.5rem;
+    }
+    &__radio {
+        color: $darkBackground;
+        text-transform: uppercase;
+        display: flex;
+        gap: 0.5rem;
+    }
+    &__allergies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 1rem 0;
+    }
+    &__allergy { 
+        color: $darkBackground;
+        text-transform: uppercase;
+        display: flex;
+        gap: 0.2rem;
+    }
+    &__allergies-label {
+        width: 100%;
+        padding-bottom: 0;
     }
 }
