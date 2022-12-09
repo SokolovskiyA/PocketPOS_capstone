@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function POSPage() {
+    
     const navigate = useNavigate();
     const [tables, setTables] = useState([])
     const [number, setNumber] = useState("")

@@ -126,4 +126,8 @@
         width: 100%;
         padding-bottom: 0;
     }
+    &__buttons {
+        padding: 0.5rem 1rem;
+        justify-content: space-between;
+    }
 }

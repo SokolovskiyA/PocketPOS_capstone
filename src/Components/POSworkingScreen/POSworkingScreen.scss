@@ -2,43 +2,97 @@
 @use '../../styles/mixins' as *;
 
 
-
-.categories {
-    height: 7%;
+.slider {
+    height: 8%;
     display: flex;
-    align-items: stretch;
-    overflow: scroll;
-    &__category {
-        background-color: $mainBackground;
-        padding: 0 1rem;
-        border-right: 2px solid $TextColor;
-        border-bottom: 1px solid $TextColor;
-        text-transform: uppercase;
-    }
-    &__category:hover {
-        background-color: $HighlightColor;
-    }
-}
-.products {
-    border-bottom: 2px solid $TextColor;
-    margin-bottom: auto;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    &__product {
-        font-size: .625rem;
+    flex-direction: column;
+    border: none;
+    border-top: 1px solid $TextColor;
+    &__row {
+        height: 50%;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0.1rem;
-        width: 3rem;
-        height: 3rem;
-        border: 1px solid $TextColor;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow: scroll;
     }
-    &__name {
-        overflow: hidden;
+    &__row::-webkit-scrollbar {
+        display: none; 
+    }
+    &__item {
+        align-self: stretch;
+        font-size: .625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $darkBackground;
+        background-color: $HighlightColor;
+        width: 100%;
+        min-width: fit-content;
+        padding: 0.2rem 0.5rem;
+        border: 0px solid $darkBackground;
+        border-bottom-width: 1.5px;
+        border-right-width: 1.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__item:hover {
+        background-color: $TextColor;
     }
 }
 
+.dishes {
+    padding: 0.5rem;
+    margin-bottom: auto;
+    height: 60%;
+    overflow: scroll;
+    &__container {
+        margin: auto;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem
+    }
+    &__dish {
+        width: 6.5rem;
+        height: 6.5rem;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 2px solid $darkBackground;
+        overflow: scroll;
+        background-color: $TextColor;
+        background-image: url('../../Assets/images/meat.png');
+        background-size: 4rem;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    &__dish-text{
+        padding: 0 0.3rem;
+        display: flex;
+        background-color: $darkBackground;
+        justify-content: space-between;
+        gap: 0.1rem;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+}
 .check {
+    height: 30%;
+    border-top: 2px solid $darkBackground;
+    background-color: $TextColor;
+    color: $darkBackground;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    &__head{
+        width: 100%;
+        border-bottom: 1px solid $darkBackground;
+    }
+    &__table {
+        border-right: 1px solid $darkBackground;
+    }
+    &__totals {
+        margin-top: auto;
+        border-top: 1px solid $darkBackground;
+    }
 }

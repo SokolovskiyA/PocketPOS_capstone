@@ -45,6 +45,9 @@
         padding: 0 0.3rem;
     }
 }
+.shift-stats::-webkit-scrollbar {
+    display: none;
+}
 .tables { 
     height: 90%;
     display: flex;

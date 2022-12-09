@@ -5,6 +5,12 @@ import './MainCabinet.scss'
 import add from '../../Assets/images/add.png';
 
 function MainCabinet() {
+
+    const restaurants = [{
+        restaurant_name: "Lift",
+        restaurant_address: "333 Menchions mews",
+        restaurant_phone: "+16047151901"
+    }]
     const navigate = useNavigate();
     const chooseRestaurant = event => {
         navigate(`/${event.target.id}`)
@@ -27,12 +33,17 @@ function MainCabinet() {
                 </section>
             </div>
             <div className='restaurants'>
-                <div onClick={chooseRestaurant} id="01" className="restaurants__restaurant">
-                    <h2 className='restaurants__name'>restaurant1</h2>
-                </div> 
-                <div onClick={chooseRestaurant} id="01" className="restaurants__restaurant">
-                    <h2 className='restaurants__name'>restaurant1</h2>
-                </div> 
+                {restaurants.map((restaurant)=> {
+                    return (
+                    <div onClick={chooseRestaurant} id={restaurant.restaurant_name} className="restaurants__restaurant">
+                        <div className='restaurants__header'>
+                            <p className='restaurants__text'>{restaurant.restaurant_name}</p>
+                            <p className='restaurants__text'>{restaurant.restaurant_address}</p>
+                            <p className='restaurants__text'>{restaurant.restaurant_phone}</p>
+                        </div>
+                    </div> 
+                )})}
+                
                 <Button click={addNew} class="restaurants__button" logo={add} text="Add New Restaurant"/>
             </div>
         </div>

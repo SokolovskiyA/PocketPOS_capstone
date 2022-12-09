@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function AddNewRestaurant() {
-    const allergies = [ "dairy", "gluten",  "shellfish", "fish", "tree nuts", "peanuts", "soy", "eggs" ]
+    //const allergies = [ "dairy", "gluten",  "shellfish", "fish", "tree nuts", "peanuts", "soy", "eggs" ]
     const navigate = useNavigate()
     const [restaurantName, setRestaurantName] = useState('')
     const [restaurantAddress, setRestaurantAddress] = useState('')
@@ -18,6 +18,7 @@ function AddNewRestaurant() {
     const [drinkCat, setDrinkCat] = useState([{drink_category: ""}])
     const [itemType, setItemType ] = useState("Food Item")
     const [items, setItems] = useState([{}])
+
 
 
     ////form field manipulation////
@@ -33,7 +34,6 @@ function AddNewRestaurant() {
             item_description:"",
             item_price: Number(),
             item_category:"",
-            item_alergies:[],
         }])
     }
     const handleRemove = (index, array, func) => {
@@ -63,10 +63,11 @@ function AddNewRestaurant() {
         }
         let drinkCategories = drinkCat
         let foodCategories = categories 
-        
+        let itemsList = items
         console.log(foodCategories)
         console.log(drinkCategories)
         console.log(newRestaurant)
+        console.log(itemsList)
     }
 
     return (
@@ -127,6 +128,7 @@ function AddNewRestaurant() {
                                         </div>
                                     </div>
                                 <select name="item_category" className="item__input" onChange={(e)=> handleChange(e, i, items, setItems)}>
+                                    <option>Please choose item category</option>
                                     { itemType === "Food Item" && (
                                         categories.map((category)=> {
                                         return(
@@ -138,6 +140,7 @@ function AddNewRestaurant() {
                                             <option key={category.drink_category} placeholder="please select item category">{category.drink_category}</option>
                                     )}))}
                                 </select>
+                                {/*
                                 <div className="item__allergies" name="allergies">
                                     <label className="addNew__label item__allergies-label">Choose allergy allerts<img className='addNew__label-img' src={chevron} alt="chevron"/></label>
                                     {allergies.map((allergy) => (
@@ -146,9 +149,8 @@ function AddNewRestaurant() {
                                             <label labelfor={allergy}>{allergy}</label>
                                         </div>
                                     ))}
-                                    
-                                </div>
-                                <div className="addNew__buttons">
+                                </div>*/}
+                                <div className="addNew__buttons item__buttons">
                                     {items.length !== 1 && <button onClick={()=> handleRemove(i, items, setItems)} className='addNew__remove'></button>}
                                     {items.length - 1 === i && <button onClick={handleItemAdd} className='addNew__add'></button>}
                                 </div>

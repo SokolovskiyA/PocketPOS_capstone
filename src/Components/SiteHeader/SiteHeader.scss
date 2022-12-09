@@ -21,9 +21,9 @@
     }
     &__link {
         margin: auto;
-    }
-    &__logo{
-        height: 4rem;
+        height: 90%;
+        display: flex;
+        justify-content: center;
     }
     &__greeting {
         text-transform: uppercase;

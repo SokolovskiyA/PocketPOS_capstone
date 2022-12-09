@@ -18,7 +18,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />}></Route>*/}
           <Route path="/" element={<MainCabinet />}></Route>
           <Route path="/:id" element={<POSPage/>}/>
-          <Route path="/table/:id" element={<POSworkingScreen/>}/>
+          <Route path="/table/:number" element={<POSworkingScreen/>}/>
           <Route path="/add-new-restaurant" element={<AddNewRestaurant />}></Route>
         </Routes>
       <SiteFooter /> 
