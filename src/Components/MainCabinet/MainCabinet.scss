@@ -16,6 +16,9 @@
         flex-direction: column;
         justify-content: space-around;
         margin-bottom: auto;
+        @include tablet {
+            flex-direction: row;
+        }
     }
     &__text {
         width: 60%;
@@ -60,5 +63,14 @@
         width: 100%;
         border-radius: 0;
         justify-content: center;
+    }
+}
+
+.react-calendar {
+    max-width: 80%;
+    color: $darkBackground;
+    margin: auto;
+    @include tablet {
+        max-width: 40%;
     }
 }

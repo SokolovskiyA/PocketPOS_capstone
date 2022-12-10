@@ -4,14 +4,16 @@ import './POSPage.scss'
 import tableLogo from '../../Assets/images/dining-table.png'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Error from '../SmallComponents/Error/Error';
 
 function POSPage() {
-    
     const navigate = useNavigate();
     const [tables, setTables] = useState([])
     const [number, setNumber] = useState("")
     const [seats, setSeats] = useState("")
-    
+    const [error, setError] = useState();
+
+
     const tableClick = event => {
         navigate(`/table/${event.target.id}`)
     }
@@ -23,10 +25,10 @@ function POSPage() {
             seats: {seats}
         }  
         if (number === "" || seats === "") {
-            console.log("please provide table info")
+            setError(true)
         }
-
         else {
+            setError(false)
             setTables([...tables, newTable])
         }
     }
@@ -78,6 +80,7 @@ function POSPage() {
                         ))}
                 </div>
                 <form onSubmit={addTable}>
+                    <Error error={error}/>
                     <div className="addform">
                         <input value={number} onChange={(e)=>setNumber(e.target.value)} className="addform__input" type="text" placeholder="table number"/>
                         <input value={seats} onChange={(e)=>setSeats(e.target.value)} className="addform__input" type="number" placeholder="number of people"/>

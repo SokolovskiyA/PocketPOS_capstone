@@ -1,0 +1,10 @@
+@use '../../../styles/colors' as *;
+
+.error {
+    background-color: $HighlightColor;
+    border: 2px solid $darkBackground;
+    border-bottom-width: 0;
+    color: $darkBackground;
+    text-align: center;
+    text-transform: uppercase;
+}

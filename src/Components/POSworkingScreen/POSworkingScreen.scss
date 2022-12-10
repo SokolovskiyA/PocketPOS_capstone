@@ -1,5 +1,5 @@
-@use '../../styles/colors' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
 
 
 .slider {
@@ -77,19 +77,54 @@
     }
 }
 .check {
-    height: 30%;
+    height: 40%;
     border-top: 2px solid $darkBackground;
     background-color: $TextColor;
     color: $darkBackground;
     overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    &__head{
-        width: 100%;
-        border-bottom: 1px solid $darkBackground;
+    &__head {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow: scroll;
     }
-    &__table {
-        border-right: 1px solid $darkBackground;
+    &__header {
+        align-self: stretch;
+        font-size: .625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $darkBackground;
+        background-color: $TextColor;
+        width: 100%;
+        min-width: 7rem;
+        border: 0px solid $darkBackground;
+        border-bottom-width: 1.5px;
+        border-right-width: 1.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__item {
+        border-bottom: 1px solid $darkBackground;
+        min-width: 7rem;
+        align-self: stretch;
+        font-size: .625rem;
+        font-weight: 400;
+        color: $darkBackground;
+        width: 100%;
+        min-width: 7rem;
+        border: 0px solid $darkBackground;
+        border-right-width: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.3rem 0.5rem;
+    }
+    &__header:hover {
+        background-color: $HighlightColor;
+    }
+    &__item-price {
+        padding-right: 0.3rem;
     }
     &__totals {
         margin-top: auto;

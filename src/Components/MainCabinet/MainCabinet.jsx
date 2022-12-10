@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Button from '../SmallComponents/Button/Button';
 import './MainCabinet.scss'
 import add from '../../Assets/images/add.png';
+import Calendar from 'react-calendar'
+
 
 function MainCabinet() {
 
@@ -31,6 +33,7 @@ function MainCabinet() {
                     <p>Total tips this month: </p>
                     <p>Total sales this month: </p>
                 </section>
+                <Calendar />
             </div>
             <div className='restaurants'>
                 {restaurants.map((restaurant)=> {
