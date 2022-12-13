@@ -6,7 +6,7 @@ import './SiteFooter.scss'
 function SiteFooter() {
   return (
     <div className="siteFooter">
-      <Link className="siteFooter__link" to="/"><img className='siteFooter__logo' src={logo} alt="main-logo"></img></Link>
+      <Link className="siteFooter__link" to="/user"><img className='siteFooter__logo' src={logo} alt="main-logo"></img></Link>
       <p className='siteFooter__madeBy'>Created by Alexander Sokolovksiy</p>
     </div>  
   )

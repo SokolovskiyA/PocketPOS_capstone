@@ -2,38 +2,57 @@ import React from 'react'
 import Button from '../SmallComponents/Button/Button'
 import './POSPage.scss'
 import tableLogo from '../../Assets/images/dining-table.png'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import Error from '../SmallComponents/Error/Error';
+import axios from 'axios';
 
 function POSPage() {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [tables, setTables] = useState([])
     const [number, setNumber] = useState("")
     const [seats, setSeats] = useState("")
     const [error, setError] = useState();
-
-
-    const tableClick = event => {
-        navigate(`/table/${event.target.id}`)
-    }
-
+    const api = "http://localhost:8081"
     const addTable = event => {
         event.preventDefault();
         const newTable = {
-            number: {number},
-            seats: {seats}
+            table_number: number,
+            table_seats: seats,
+            restaurant_id: id
         }  
-        if (number === "" || seats === "") {
+        const scan = tables.find(table => table.table_number === Number(number))
+        const seatsNew = Array.from({length: seats}, (v, i) => i)
+        console.log(seatsNew)
+        /*
+        if (number === "" || seats === "" || scan ) {
             setError(true)
         }
         else {
             setError(false)
-            setTables([...tables, newTable])
+            axios.post(`${api}/${id}/tables`, newTable)
+            .catch((error) => {
+                console.log("error");
+            });
         }
+        */
     }
+    useEffect(() => {
+        axios
+            .get(`${api}/${id}/tables`)
+            .then((res) => {
+                setTables(res.data)
+            })
+            .catch((error) => {
+                console.log("error");
+            });
+    }, [api, addTable]);
 
-    
+    const tableClick = (e, table) => {
+        navigate(`/user/${id}/table/${table.table_number}`)
+    }
     return (
         <div className="main-cabinet">
             <div className='shift-stats'>
@@ -74,8 +93,8 @@ function POSPage() {
             <div className='tables'>
                 <div className='tables__container'>
                         {tables?.map((table)=> (
-                            <div onClick={tableClick} id={table.number.number} className='tables__table'>
-                            <p className='tables__number'>{table.number.number}</p>
+                            <div onClick={e => tableClick(e, table)} key={table.table_id} className='tables__table'>
+                            <p className='tables__number'>{table.table_number}</p>
                         </div>
                         ))}
                 </div>

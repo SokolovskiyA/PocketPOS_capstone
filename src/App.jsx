@@ -9,6 +9,7 @@ import POSPage from './Components/POSPage/POSPage'
 import POSworkingScreen from "./Components/POSworkingScreen/POSworkingScreen";
 import AddNewRestaurant from "./Components/AddNewRestaurant/AddNewRestaurant";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,10 +17,10 @@ function App() {
         <Routes>
           {/*<Route path="/login" element={<LogInForm />}></Route>
           <Route path="/register" element={<RegisterForm />}></Route>*/}
-          <Route path="/" element={<MainCabinet />}></Route>
-          <Route path="/:id" element={<POSPage/>}/>
-          <Route path="/table/:number" element={<POSworkingScreen/>}/>
-          <Route path="/add-new-restaurant" element={<AddNewRestaurant />}></Route>
+          <Route path="/user" element={<MainCabinet />}></Route>
+          <Route path="/user/:id" element={<POSPage/>}/>
+          <Route path="/user/:id/table/:n" element={<POSworkingScreen/>}/>
+          <Route path="/user/add-new-restaurant" element={<AddNewRestaurant />}></Route>
         </Routes>
       <SiteFooter /> 
     </BrowserRouter>
