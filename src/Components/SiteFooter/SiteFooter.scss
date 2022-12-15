@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     height: 10vh;
+    border-top: 2px solid $TextColor;
     &__logo {
         height: 3rem;
     }

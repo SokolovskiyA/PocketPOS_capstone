@@ -8,6 +8,7 @@
     height: 10vh;
     display: flex;
     justify-content: center;
+    border-bottom: 2px solid $TextColor;
     &__user-div {
         width: 100%;
         padding: 0.5rem;

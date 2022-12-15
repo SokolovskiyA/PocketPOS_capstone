@@ -86,7 +86,6 @@
 .item {
     width: 98%;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid $darkBackground;
     &__input { 
         width: 100%;
         margin: 0.5rem;
@@ -98,17 +97,6 @@
     }
     &__input:focus {
         outline: 2px solid $activeColor;
-    }
-    &__type {
-        display: flex;
-        justify-content: space-around;
-        padding: 0.5rem;
-    }
-    &__radio {
-        color: $darkBackground;
-        text-transform: uppercase;
-        display: flex;
-        gap: 0.5rem;
     }
     &__allergies {
         display: flex;
@@ -129,5 +117,19 @@
     &__buttons {
         padding: 0.5rem 1rem;
         justify-content: space-between;
+    }
+}
+.items-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    &__items {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }

@@ -88,6 +88,9 @@
         flex-wrap: nowrap;
         overflow: scroll;
     }
+    &__head::-webkit-scrollbar {
+        display: none; 
+    }
     &__header {
         align-self: stretch;
         font-size: .625rem;
@@ -96,7 +99,7 @@
         color: $darkBackground;
         background-color: $TextColor;
         width: 100%;
-        min-width: 7rem;
+        min-width: 9rem;
         border: 0px solid $darkBackground;
         border-bottom-width: 1.5px;
         border-right-width: 1.5px;

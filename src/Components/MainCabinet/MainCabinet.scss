@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .main-cabinet {
+    position: relative;
     background-color: $mainBackground;
     display: flex;
     flex-direction: column;
@@ -63,6 +64,25 @@
         width: 100%;
         border-radius: 0;
         justify-content: center;
+    }
+    &__shift-buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__shift {
+        width: fit-content;
+        margin: 1rem;
+        border-radius: 10px;
+    }
+    &__shift-message {
+        background-color: $TextColor;
+        color: $darkBackground;
+        text-align: center;
+        width: 100%;
+        padding: 0.2rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.5rem;
     }
 }
 

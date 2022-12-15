@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { ReactSession } from 'react-client-session';
 import './POSworkingScreen.scss'
 
 function POSworkingScreen() {
     const { id } = useParams()
-    let {number} = useParams()
-    const api = "http://localhost:8081"
+    const { tableId } = useParams()
+    const api = ReactSession.get("server_api")
     const [products, setProducts] = useState([])
-    let [categories, setCategories] = useState([])
-    let [drinkCategories, setDrinkCategories] = useState([])
     const [order, setOrder] = useState([])
-    
+    const [categories, setCategories] = useState([])
+    const [drinkCategories, setDrinkCategories] = useState([])
+    const [table, setTable] = useState()
+    const [seats, setSeats] = useState([])
+
     useEffect(() => {
         axios
             .get(`${api}/${id}/menu`)
@@ -25,10 +28,23 @@ function POSworkingScreen() {
             .catch((error) => {
                 console.log("error");
             });
-        }, [api]);
-        const onCategoryClick = (e, category) => {
+        axios
+            .get(`${api}/tables/${tableId}`)
+            .then((res)=> {
+                setTable(res.data[0])
+                console.log(res.data[0].table_seats)
+                const seatsRecieved = Array.from({length: res.data[0].table_seats }, (v, i) => i).map((num => {
+                    return {seat_number: num,
+                        table_id: res.data[0].table_id}
+                }))
+                setSeats(seatsRecieved)
+            })
+            .catch((error) => {
+                console.log("error");
+            });
+    }, [api, id]);
+    const onCategoryClick = (e, category) => {
         e.preventDefault()
-        console.log(category.category_id)
         axios
         .get(`${api}/items/${category.category_id}`)
         .then((res) => {
@@ -38,11 +54,16 @@ function POSworkingScreen() {
             console.log("error");
         });
     }
-
-    const addToCheck = (e, item) => {
+    const addToCheck = (e, item, activeSeat) => {
         e.preventDefault()
-        setOrder([...order, item])
+        const newOrder = {
+            orderItem_name: item.item_name,
+            orderItem_price: item.item_price,
+            table_id: tableId
+        }
+        console.log(newOrder)
     }
+
 
     return (
             <table className='main-cabinet'>
@@ -59,7 +80,6 @@ function POSworkingScreen() {
                     </tr>
                 </thead>
                 <tbody className='dishes'>
-
                     <tr className='dishes__container'>
                         {products.map((product) => (
                         <td onClick={e => addToCheck(e, product)} className="dishes__dish" id={product.item_id}>
@@ -73,34 +93,10 @@ function POSworkingScreen() {
                 </tbody>
                 <tfoot className="check">
                     <tr className='check__head'>
-                        <th className='check__header'><p className='subheader'>Table {number}</p></th>
-                        <th className='check__header'>seat 1</th>
-                        <th className='check__header'>seat 2</th>
-                        <th className='check__header'>seat 3</th>
-                        <th className='check__header'>seat 4</th>
-                        {/*insert loop through seat numbers*/}
+                        {seats.map((seat)=> (
+                            <th className='check__header' key={seat.seat_number}> seat {seat.seat_number}</th>
+                        ))}
                     </tr>
-                    {order.map((item)=> (
-                        <tr className='check__head'>
-                            <td className='check__item'></td>
-                            <td className='check__item'>
-                                <p className='check__item-text'>{item.name}</p>
-                                <p className='check__item-price'>{item.price}</p>
-                            </td>
-                            <td className='check__item'>
-                                <p className='check__item-text'>{item.name}</p>
-                                <p className='check__item-price'>{item.price}</p>
-                            </td>
-                            <td className='check__item'>
-                                <p className='check__item-text'>{item.name}</p>
-                                <p className='check__item-price'>{item.price}</p>
-                            </td>
-                            <td className='check__item'>
-                                <p className='check__item-text'>{item.name}</p>
-                                <p className='check__item-price'>{item.price}</p>
-                            </td>
-                        </tr>
-                    ))}
                     <tr className='check__totals'>
                         <td className='check__table'><p className='subheader'>$ 0</p></td>
                         {/*insert loop through seat numbers*/}
