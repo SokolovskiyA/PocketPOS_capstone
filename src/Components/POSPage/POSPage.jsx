@@ -3,6 +3,7 @@ import './POSPage.scss'
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactSession } from 'react-client-session';
+import { useCallback } from 'react';
 import tableLogo from '../../Assets/images/dining-table.png'
 import Button from '../SmallComponents/Button/Button'
 import axios from 'axios';
@@ -20,7 +21,7 @@ function POSPage() {
     const [shiftEnd, setShiftEnd] = useState(false)
     const [tableError, setTableError] = useState(false)
     
-    const addTable = event => {
+    const addTable = useCallback((event)=> { 
         event.preventDefault();
         const properSeats = Number(seats) + 1
         const newTable = {
@@ -41,7 +42,8 @@ function POSPage() {
                 console.log("error");
             });
         }
-    }
+    }, [tables, api, number, seats, shift.restaurant_id, shift.shift_id])
+
 
     useEffect(() => {
         axios
@@ -53,6 +55,7 @@ function POSPage() {
                 console.log("error");
             });
     }, [api, userId]);
+    
     useEffect(()=> {
         axios
             .get(`${api}/${shift.shift_id}/tables`)
@@ -62,7 +65,8 @@ function POSPage() {
             .catch((error) => {
                 console.log("error");
             });
-    },[api, shift, addTable])
+    },[api, shift])
+    
     const closeShift = e => {
         e.preventDefault()
         if (tables.length === 0) {

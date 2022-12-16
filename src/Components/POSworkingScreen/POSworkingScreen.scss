@@ -77,17 +77,26 @@
     }
 }
 .check {
-    height: 40%;
     border-top: 2px solid $darkBackground;
     background-color: $TextColor;
     color: $darkBackground;
     overflow: scroll;
+    &__delete-button {
+        width: 0.6rem;
+        height: 0.6rem;
+        margin-left: auto;
+    }
     &__head {
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
+        overflow: scroll;
+        @include tablet {
+            overflow:visible;
+        }
     }
     &__header {
+        padding:0.3rem;
         align-self: stretch;
         font-size: .625rem;
         font-weight: 700;
@@ -106,7 +115,10 @@
     &__items { 
         display: flex;
         align-items: center;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        @include tablet {
+            flex-wrap: nowrap;
+        }
     }
     &__items-box {
         min-width: 7rem;
@@ -128,8 +140,7 @@
     &__item { 
         display: flex;
         width: 100%;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        gap: 0.3rem;
     }
     &__item-text {
         text-transform: uppercase;
@@ -137,9 +148,53 @@
     &__header:hover {
         background-color: $HighlightColor;
     }
+    &__totals {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.3rem;
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+    &__close {
+        width: 100%;
+        border-radius: 10px;
+        margin: auto;
+        @include tablet {
+            width: fit-content;
+            margin: 0;
+        }
+    }
+    &__input { 
+        width: 100%;
+        margin: auto;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid $darkBackground;
+        font-family: inherit;
+        resize: none;
+        @include tablet {
+            width: 10rem;
+            margin: 0;
+        }
+    }
+    &__input:focus {
+        outline: 2px solid $activeColor;
+    }
+    &__label {
+        @include tablet {
+            margin-left: auto;
+        }
+    }
 }
 
 .active {
     background-color: $TextColor;
     color: $HighlightColor
+}
+.active-seat {
+    background-color: $HighlightColor;
+    color: $TextColor;
 }

@@ -131,7 +131,7 @@ function AddNewRestaurant() {
                             return (
                                 <div key={i} className='item'>
                                     <input name="item_name" value={item.item_name} onChange={(e)=> handleChange(e, i, foodItems, setFoodItems)} type="text" className='item__input'  placeholder='Item Name'/>
-                                    <input name="item_price" value={item.item_price} onChange={(e)=> handleChange(e, i, foodItems, setFoodItems)} type="number" className='item__input' placeholder='Item Price $'/>
+                                    <input name="item_price" value={item.item_price} onChange={(e)=> handleChange(e, i, foodItems, setFoodItems)} type="number" placeholder="1.0" step="0.01" min="0" max="10000" className='item__input' placeholder='Item Price $'/>
                                     <textarea name="item_description" value={item.item_description} onChange={(e)=> handleChange(e, i, foodItems, setFoodItems)} type="text" className="item__input" placeholder='Item Decription (syllabus, ingredients, etc.)' rows="5"/>
                                     <select name="item_category" className="item__input" onChange={(e)=> handleChange(e, i, foodItems, setFoodItems)}>
                                         <option>Please choose item category</option>
@@ -165,7 +165,7 @@ function AddNewRestaurant() {
                             return (
                                 <div key={i} className='item'>
                                     <input name="item_name" value={item.item_name} onChange={(e)=> handleChange(e, i, drinkItems, setDrinkItems)} type="text" className='item__input'  placeholder='Item Name'/>
-                                    <input name="item_price" value={item.item_price} onChange={(e)=> handleChange(e, i, drinkItems, setDrinkItems)} type="number" className='item__input' placeholder='Item Price $'/>
+                                    <input name="item_price" value={item.item_price} onChange={(e)=> handleChange(e, i, drinkItems, setDrinkItems)} type="number" placeholder="1.0" step="0.01" min="0" max="10000" className='item__input' placeholder='Item Price $'/>
                                     <textarea name="item_description" value={item.item_description} onChange={(e)=> handleChange(e, i, drinkItems, setDrinkItems)} type="text" className="item__input" placeholder='Item Decription (syllabus, ingredients, etc.)' rows="5"/>
                                     <select name="item_category" className="item__input" onChange={(e)=> handleChange(e, i, drinkItems, setDrinkItems)}>
                                         <option>Please choose item category</option>
