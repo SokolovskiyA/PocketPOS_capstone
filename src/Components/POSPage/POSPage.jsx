@@ -43,8 +43,7 @@ function POSPage() {
             });
         }
     }, [tables, api, number, seats, shift.restaurant_id, shift.shift_id])
-
-
+    
     useEffect(() => {
         axios
             .get(`${api}/${userId}/shift`)
@@ -65,7 +64,7 @@ function POSPage() {
             .catch((error) => {
                 console.log("error");
             });
-    },[api, shift])
+    },[api, shift, addTable])
     
     const closeShift = e => {
         e.preventDefault()

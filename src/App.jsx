@@ -18,7 +18,6 @@ function App() {
   ReactSession.set("username", "Alex");
   ReactSession.set("user_id", "a0e055de-7c2a-11ed-a1eb-0242ac120002");
   ReactSession.set("server_api", "http://localhost:8081");
-  
   const id = ReactSession.get("user_id")
   
   return (
