@@ -14,8 +14,6 @@ import AddNewRestaurant from "./Components/AddNewRestaurant/AddNewRestaurant";
 
 
 function App() {
-
-
   ReactSession.setStoreType("localStorage");
   ReactSession.set("username", "Alex");
   ReactSession.set("user_id", "a0e055de-7c2a-11ed-a1eb-0242ac120002");

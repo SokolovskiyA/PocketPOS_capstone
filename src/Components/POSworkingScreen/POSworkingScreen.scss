@@ -86,10 +86,6 @@
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
-        overflow: scroll;
-    }
-    &__head::-webkit-scrollbar {
-        display: none; 
     }
     &__header {
         align-self: stretch;
@@ -107,30 +103,43 @@
         align-items: center;
         justify-content: center;
     }
-    &__item {
-        border-bottom: 1px solid $darkBackground;
+    &__items { 
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    &__items-box {
         min-width: 7rem;
         align-self: stretch;
         font-size: .625rem;
         font-weight: 400;
         color: $darkBackground;
         width: 100%;
-        min-width: 7rem;
+        min-width: 9rem;
         border: 0px solid $darkBackground;
         border-right-width: 1px;
+        border-bottom-width: 1px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         padding: 0.3rem 0.5rem;
+    }
+    &__item { 
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    &__item-text {
+        text-transform: uppercase;
     }
     &__header:hover {
         background-color: $HighlightColor;
     }
-    &__item-price {
-        padding-right: 0.3rem;
-    }
-    &__totals {
-        margin-top: auto;
-        border-top: 1px solid $darkBackground;
-    }
+}
+
+.active {
+    background-color: $TextColor;
+    color: $HighlightColor
 }

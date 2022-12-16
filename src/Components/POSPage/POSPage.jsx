@@ -29,6 +29,7 @@ function POSPage() {
             shift_id: shift.shift_id, 
             table_total: Number(), 
             table_tips: Number(),
+            restaurant_id: shift.restaurant_id
         }  
         const scan = tables.find(table => table.table_number === Number(number))
         if (number === "" || seats === "" || scan ) {
@@ -62,7 +63,6 @@ function POSPage() {
                 console.log("error");
             });
     },[api, shift, addTable])
-
     const closeShift = e => {
         e.preventDefault()
         if (tables.length === 0) {
