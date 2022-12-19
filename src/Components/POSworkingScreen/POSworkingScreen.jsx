@@ -22,6 +22,7 @@ function POSworkingScreen() {
     const [orderTotal, setTotal ] = useState()
     const [ tips, setTips ] = useState(0)
     const [ shift, setShift] = useState({})
+
     useEffect(() => {
         getOrder()
         getShift()
@@ -101,7 +102,6 @@ function POSworkingScreen() {
     }
     const onSeatClick = (event, seat) => {
         setActiveSeat(seat.seat_number)
-        event.currentTarget.classList.toggle('active-seat');
     };
     const deleteItem = (event, item) => {
         axios
@@ -124,7 +124,6 @@ function POSworkingScreen() {
             user_id: id, 
             shift_closedTables: closedTables
         }
-        
         axios
             .put(`${api}/${id}/shift`, updateShift)
             .catch((error) => {
@@ -154,7 +153,7 @@ function POSworkingScreen() {
                 <div className='dishes'>
                     <ul className='dishes__container'>
                         {products.map((product) => (
-                        <li onClick={e => addToCheck(e, product)} className="dishes__dish" id={product.item_id}>
+                        <li onClick={e => addToCheck(e, product)} className="dishes__dish" key={product.item_id}>
                             <div className='dishes__dish-text'>
                                 <p className="">{product.item_name}</p>
                                 <p className="">${product.item_price}</p>
@@ -163,6 +162,7 @@ function POSworkingScreen() {
                         ))}
                     </ul>
                 </div>
+                <div className="order-for"><p>order for seat {activeSeat}</p></div> 
                 <div className="check">
                     <ul className='check__head'>
                         {seats.map((seat)=> (

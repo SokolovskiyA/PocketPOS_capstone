@@ -195,6 +195,13 @@
     color: $HighlightColor
 }
 .active-seat {
+    
+}
+.order-for {
     background-color: $HighlightColor;
     color: $TextColor;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.2rem 1rem;
+    border-top: 2px solid $darkBackground;
 }

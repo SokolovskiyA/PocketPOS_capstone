@@ -20,7 +20,18 @@ function POSPage() {
     const [shift, setShift] = useState({})
     const [shiftEnd, setShiftEnd] = useState(false)
     const [tableError, setTableError] = useState(false)
-    
+    const [percentage, setPercentage] = useState(0)
+    const [user, setUser] = useState({})
+    const getTable = () => {
+        axios
+            .get(`${api}/${shift.shift_id}/tables`)
+            .then((res) => {
+                setTables(res.data)
+            })
+            .catch((error) => {
+                console.log("error");
+            });
+    }
     const addTable = useCallback((event)=> { 
         event.preventDefault();
         const properSeats = Number(seats) + 1
@@ -38,12 +49,14 @@ function POSPage() {
         }
         else {
             axios.post(`${api}/shift/tables`, newTable)
+            .then(()=> {
+                getTable()
+            })
             .catch((error) => {
                 console.log("error");
             });
         }
     }, [tables, api, number, seats, shift.restaurant_id, shift.shift_id])
-    
     useEffect(() => {
         axios
             .get(`${api}/${userId}/shift`)
@@ -53,30 +66,37 @@ function POSPage() {
             .catch((error) => {
                 console.log("error");
             });
-    }, [api, userId]);
-    
-    useEffect(()=> {
         axios
-            .get(`${api}/${shift.shift_id}/tables`)
+            .get(`${api}/${userId}`)
             .then((res) => {
-                setTables(res.data)
+                setUser(res.data)
+                console.log(res.data)
             })
             .catch((error) => {
                 console.log("error");
-            });
-    },[api, shift, addTable])
-    
+            });  
+    }, [api, userId]);
+    useEffect(()=> {
+        getTable()
+    },[api, shift])
     const closeShift = e => {
         e.preventDefault()
+        const newUserData = {
+            user_sales: user.user_sales + shift.shift_sales,
+            user_shifts: user.user_shifts + 1,
+            user_tips: user.user_tips + shift.shift_tips
+        }
         if (tables.length === 0) {
             axios
-            .delete(`${api}/${userId}}/shift/${shift.shift_id}`)
-            .then((res)=> {
-                console.log(res)
-            })
-            .catch((error) => {
-                console.log("error");
-            });
+                .put(`${api}/${userId}`, newUserData)
+                .catch((error) => {
+                    console.log("error");
+                    });
+            axios
+                .delete(`${api}/${userId}}/shift/${shift.shift_id}`)
+                .catch((error) => {
+                    console.log("error");
+                });
         navigate(`/${userId}`)
         }
         else {
@@ -93,34 +113,28 @@ function POSPage() {
         {tableError === true && <PopUp closePop={closePop} text="Please provide new table information"/>}
             <div className='shift-stats'>
                 <h1 className='shift-stats__header'>Shift Stats:</h1> 
-                <table>
+                <table className="shift-stats__table">
                     <tbody className="shift-stats__table">
                         <tr className="shift-stats__table-row">
-                            <td>Open tables:</td>
-                            <td>{tables.length}</td>
+                            <td className='shift-stats__td'>Open tables:</td>
+                            <td className='shift-stats__td'>{tables.length}</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Closed tables:</td>
-                            <td>{shift.shift_closedTables}</td>
+                            <td className='shift-stats__td'>Closed tables:</td>
+                            <td className='shift-stats__td'>{shift.shift_closedTables}</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Total Sales: $</td>
-                            <td>{shift.shift_sales}</td>
+                            <td className='shift-stats__td'>Total Sales: $</td>
+                            <td className='shift-stats__td'>{shift.shift_sales}</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Total tips earned: $</td>
-                            <td>{shift.shift_tips}</td>
+                            <td className='shift-stats__td'>Total tips earned: $</td>
+                            <td className='shift-stats__td'>{shift.shift_tips}</td>
                         </tr>
                         <tr className="shift-stats__table-row">
-                            <td>Kitchen tipout: $</td>
-                            <td>0</td>
-                        </tr>
-                        <tr className="shift-stats__table-row">
-                            <td>Bar tipout: $</td>
-                            <td>0</td>
-                        </tr>
-                        <tr className="shift-stats__table-row">
-                            <td>0</td>
+                            <td className='shift-stats__td'>Tipout calculator: </td>
+                            <td className='shift-stats__td'><input className="shift-stats__tips" name="percentage" type="number" value={percentage} onChange={e => setPercentage(e.target.value)} placeholder="%" step="0.01" min="0" max="100" /></td>
+                            <td className='shift-stats__td'>{(shift.shift_sales/100) * percentage}</td>
                         </tr>
                     </tbody>
                 </table> 

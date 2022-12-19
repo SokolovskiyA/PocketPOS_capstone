@@ -23,7 +23,7 @@
     align-items: center;
     gap: 0.5rem;
     overflow: scroll;
-    height: 5%;
+    height: 10%;
     &__header { 
         min-width: max-content;
         font-size: 1rem;
@@ -35,13 +35,23 @@
         align-self: stretch;
     }
     &__table-row { 
+        align-self: stretch;
         height: 100%;
         display: flex;
         flex-wrap: nowrap;
+        align-items: center;
         gap: 0.5rem;
         min-width: max-content;
         border-right: 1px solid $darkBackground;
         padding: 0 0.3rem;
+    }
+    &__tips {
+        padding: 0.3rem;
+        border: 1px solid $darkBackground;
+        border-radius: .625rem;
+    }
+    &__tips:focus {
+        outline: none;
     }
 }
 .shift-stats::-webkit-scrollbar {

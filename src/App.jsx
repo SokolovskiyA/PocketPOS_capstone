@@ -1,7 +1,7 @@
 import "./App.scss";
 import { ReactSession } from 'react-client-session';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import LogInForm from './Components/LogInForm/LogInForm';
+import LogInForm from "./Components/LogInForm/LogInForm";
 //import RegisterForm from './Components/RegisterForm/RegisterForm';
 import MainCabinet from './Components/MainCabinet/MainCabinet'
 import SiteFooter from "./Components/SiteFooter/SiteFooter";
@@ -24,8 +24,8 @@ function App() {
     <BrowserRouter>
       <SiteHeader />
         <Routes>
-          {/*<Route path="/login" element={<LogInForm />}></Route>
-          <Route path="/register" element={<RegisterForm />}></Route>*/}
+          <Route path="/" element={<LogInForm />}></Route>
+          {/*<Route path="/register" element={<RegisterForm />}></Route>*/}
           <Route path={`/${id}`} element={<MainCabinet />}></Route>
           <Route path={`/${id}/shift`} element={<POSPage/>}/>
           <Route path={`/${id}/shift/:tableId`} element={<POSworkingScreen/>}/>
