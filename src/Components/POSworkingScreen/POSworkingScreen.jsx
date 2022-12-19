@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './POSworkingScreen.scss'
 import del from '../../Assets/icons/close.png'
 import Button from '../SmallComponents/Button/Button';
+import back from '../../Assets/icons/back-button.png'
 
 function POSworkingScreen() {
     const navigate = useNavigate()
@@ -136,6 +137,9 @@ function POSworkingScreen() {
             });
         navigate(`/${id}/shift`)
     }
+    const goBack = () => {
+        navigate(`/${id}/shift`)
+    }
     return (
             <div className='main-cabinet'>
                 <div className='slider'>
@@ -151,6 +155,7 @@ function POSworkingScreen() {
                     </ul>
                 </div>
                 <div className='dishes'>
+                    <Button click={goBack} class="back-button" logo={back} text="go back"/>
                     <ul className='dishes__container'>
                         {products.map((product) => (
                         <li onClick={e => addToCheck(e, product)} className="dishes__dish" key={product.item_id}>

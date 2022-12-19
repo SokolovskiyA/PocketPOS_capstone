@@ -9,6 +9,7 @@ import Button from '../SmallComponents/Button/Button'
 import axios from 'axios';
 import close from '../../Assets/icons/close.png'
 import PopUp from '../SmallComponents/PopUp/PopUp';
+import back from '../../Assets/icons/back-button.png'
 
 function POSPage() {
     const userId = ReactSession.get("user_id")
@@ -107,6 +108,9 @@ function POSPage() {
         setShiftEnd(false)
         setTableError(false)
     }
+    function goBack() {
+        navigate(`/${userId}`)
+    }
     return (
         <div className="main-cabinet">
         {shiftEnd === true && <PopUp closePop={closePop} text="Please close all tables"/>}
@@ -141,6 +145,7 @@ function POSPage() {
             </div>
             <Button click={closeShift} text="close shift" logo={close} />
             <div className='tables'>
+                <Button click={goBack} class="back" logo={back} text="go back"/>
                 <div className='tables__container'>
                         {tables?.map((table)=> (
                             <div onClick={e => navigate(`/${userId}/shift/${table.table_id}`)} key={table.table_id} className='tables__table'>

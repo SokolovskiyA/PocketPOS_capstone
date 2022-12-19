@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Button from '../SmallComponents/Button/Button';
 import './MainCabinet.scss'
 import add from '../../Assets/images/add.png';
-//import Calendar from 'react-calendar';
 import { useState, useEffect } from 'react';
 import { ReactSession } from 'react-client-session';
 import axios from 'axios';
 import money from '../../Assets/icons/money-bag.png';
+import Avatar from "../SmallComponents/Avatar/Avatar";
 
 function MainCabinet() {
     const userId = ReactSession.get("user_id")
@@ -47,17 +47,15 @@ function MainCabinet() {
     return (
         <div className='main-cabinet'>
             <div className="main-cabinet__info">
-                {/*<div className='main-cabinet__avatar-div'>
-                    <Avatar class="main-cabinet__avatar"/>
-                    <Button class="main-cabinet__uploadButton" logo={uploadAvo} text="choose new avatar"/>
-                </div>*/} 
+                    <div className="avo-div">
+                        <Avatar />
+                    </div>
                 <section className="main-cabinet__text">
-                    <h1>{user.user_name}, here is your statistics:</h1>
-                    <p>Total shifts worked: {user.user_shifts}</p>
-                    <p>Total tips this earned: {user.user_tips}</p>
-                    <p>Total sales: {user.user_sales}</p>
+                    <h1 className="main-cabinet__header">{user.user_name}, here is your statistics:</h1>
+                    <p className="main-cabinet__stats">Total shifts worked: {user.user_shifts}</p>
+                    <p className="main-cabinet__stats">Total tips this earned: {user.user_tips}</p>
+                    <p className="main-cabinet__stats">Total sales: {user.user_sales}</p>
                 </section>
-                {/*<Calendar />*/}
             </div>
             {shift.length >0 && <p className ="restaurants__shift-message">to start new shift, please close current one</p>}
             <div className='restaurants'>

@@ -17,6 +17,11 @@
 
 
 <h1>Pocket POS</h1>
+<ul>
+    <h4>Project Repositiories:</h4>
+    <p>(https://github.com/SokolovskiyA/PocketPOS_capstone)</p>
+    <p>(https://github.com/SokolovskiyA/pocket_pos_backend)</p>
+</ul>
 <hr><p>PocketPOS is a web application for front of house workers of service industry to keep track of their gratuity earnings, total sales and tip-outs. As well as providing all required functionality to have POS system available on the chosen device to organize order taking and shift organization.</p><h2>General Information</h2>
 <hr><ul>
 <li>In my 12+ years in restaurant business I realized that people who work as a server/bartender for many years most likely have a job in multiple places that might or might not have house POS. The preferred way of righting down the order for a table and then passing it to POS is still pen and paper for most of small places.</li>

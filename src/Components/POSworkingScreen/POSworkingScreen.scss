@@ -81,6 +81,7 @@
     background-color: $TextColor;
     color: $darkBackground;
     overflow: scroll;
+    max-height: 50%;
     &__delete-button {
         width: 0.6rem;
         height: 0.6rem;
@@ -190,13 +191,6 @@
     }
 }
 
-.active {
-    background-color: $TextColor;
-    color: $HighlightColor
-}
-.active-seat {
-    
-}
 .order-for {
     background-color: $HighlightColor;
     color: $TextColor;
@@ -204,4 +198,9 @@
     font-weight: 600;
     padding: 0.2rem 1rem;
     border-top: 2px solid $darkBackground;
+}
+.back-button {
+    width: fit-content;
+    border-radius: .625rem;
+    margin-bottom: 1rem;
 }

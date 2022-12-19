@@ -1,3 +1,37 @@
 @use '../../styles/colors' as*;
 @use '../../styles/mixins' as*;
 
+.form-div {
+    background-color: $HighlightColor;
+    padding: 1rem;
+    border-radius: .625rem;
+    border: 2px solid $darkBackground;
+    width: 80%;
+    height: 70%;
+    margin:auto;
+    align-self: center;
+    @include tablet {
+        max-width: 20rem;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 0.5rem;
+    }
+    &__input { 
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid $darkBackground;
+        font-family: inherit;
+        resize: none;
+    }
+    &__input:focus {
+        outline: 2px solid $activeColor;
+    }
+    &__button {
+        border-radius: .625rem;
+        margin-top: auto;
+    }
+}

@@ -3,6 +3,7 @@
     .avatar {
         background-color: $mainBackground;
         border-radius: 50%;
-        width: 2.5rem; 
-        height: 2.5rem;
+        border: 2px solid $TextColor;
+        width: 100%;
+        height: auto;
     }
