@@ -45,7 +45,7 @@
 <li>Axios</li>
 </ul><h2>Screenshots</h2>
 <hr>
-<p><img src="/Users/alexandersokolovskiy/Desktop/Coding/Brainstation/Projects/capstone_folder/capstone_front/src/Assets/images/main-cabinet.png" alt=""></p>
+<p><img src="src/Assets/images/main-cabinet.png" alt=""></p>
 <h2>Main Cabinet Page</h2>
 <p>This is main user cabinet for the application. User is able to see every restaurant he works at, his statitiscs ща sales and tips earned</p>
 <p>Buttons to start the shift in the restaurants will open shift in this resaturant and store it on back end. There can only be one shift open per user. If shift has already been open, button button to start the shift dissapears, but button to continue shift appears.</p>
