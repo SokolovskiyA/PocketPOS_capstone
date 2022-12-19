@@ -44,7 +44,29 @@
 </ul><ul>
 <li>Axios</li>
 </ul><h2>Screenshots</h2>
-<hr><p><img src="/Users/alexandersokolovskiy/Desktop/Coding/Brainstation/Projects/capstone_folder/capstone_front/src/Assets/images/main-cabinet.png" alt=""></p><p><img src="src/Assets/images/pos-screen.png" alt=""></p><p><img src="src/Assets/images/working-screen.png" alt=""></p><p><img src="src/Assets/images/add-new-restaurant.png"
+<hr>
+<p><img src="/Users/alexandersokolovskiy/Desktop/Coding/Brainstation/Projects/capstone_folder/capstone_front/src/Assets/images/main-cabinet.png" alt=""></p>
+<h2>Main Cabinet Page</h2>
+<p>This is main user cabinet for the application. User is able to see every restaurant he works at, his statitiscs ща sales and tips earned</p>
+<p>Buttons to start the shift in the restaurants will open shift in this resaturant and store it on back end. There can only be one shift open per user. If shift has already been open, button button to start the shift dissapears, but button to continue shift appears.</p>
+<p><img src="src/Assets/images/add-new-restaurant.png"/></p>
+<h2>Add new restaurant page</h2>
+<p>Helps user to set up new restarant</p>
+<p>Page is still in development</p>
+<p><img src="src/Assets/images/pos-screen.png" alt=""></p>
+<h2>Shift Screen</h2>
+<p>Main pos screen allows user to create new tables and customly input table number and amount of people at the table.<br>There is also ongoing shift statistic and shift calculator displaнув on top of the screen</p>
+<p>App will not allow to create more tables with the same table number. It will also not allow user to close the shift if there are any open tables. relative pop up message will be displayed</p>
+<p><img src="src/Assets/images/working-screen.png" alt=""></p>
+<h2>Main working screen</h2>
+<p>User can navigate throu check by clicking on seat number. Active seat will be displayed above check.</p>
+<p>After choosing the seat, user can navigate through menu using tabs on top of screen. Each tub will display list of dishes corresponding with menu category</p>
+<p>By clicking on menu item, item will be added to the active seat number. User can delete item by clicking on corresponding button nex to it</p>
+<p>Total of the check displaye at the bottom of the screen. Before closing the table, user can include gratuity amount.</p>
+<p>Upon closing table, shift statistics will be updated with added sales and tips. And by closing shift user data will be updated</p>
+<hr> 
+<p>Because of size and complexity of the project, decisions has been made to simplify app to include only core features for demonstration purposes. Look for Future features in features section</p>
+
 </ul><h2>Features</h2>
 <hr><ul>
 <li>Simple interface design to work best on smaller screen sizes</li>
